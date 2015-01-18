@@ -1,0 +1,112 @@
+drop table paciente
+
+create table paciente(
+cod_paciente int  IDENTITY,
+cod_convenio int not null,
+nome_paciente varchar (30) not null,
+cpf varchar  (11) not null,
+rg varchar  (8) not null,
+dataNascimento varchar (50) not null,
+endereco varchar (50) not null,
+cep varchar  (50) not null,
+bairro varchar (50) not null,
+cidade varchar (50) not null,
+estado varchar (50) not null,
+logradouro varchar (50) not null,
+complemento varchar (50) not null,
+celular varchar  (15) not null,
+email varchar (50) not null,
+profissao varchar (50) not null,
+paciente_desde varchar  (8) not null,
+ultima_consulta varchar  (8) not null,
+constraint pk_cod_paciente primary key (cod_paciente),
+constraint fk_cod_convenio foreign key (cod_convenio) references convenio (cod_convenio)
+)
+
+
+ create table convenio(
+cod_convenio int IDENTITY,
+nome_empresa varchar (30) not null,
+cnpj int  not null,
+endereco varchar (30) not null,
+cidade varchar (30) not null,
+constraint cod_convenio primary key (cod_convenio)
+
+)
+
+create table especialista (
+cod_especialista int identity,
+cod_especialidade int not null,
+crm varchar (30) not null,
+nome_especialista varchar (30) not null,
+endereco varchar (30) not null,
+bairro varchar (30) not null,
+cidade varchar (30) not null,
+logradouro varchar (50)  not null,
+estado varchar (30) not null,
+complemento varchar (50) not null,
+telefone varchar  (30) not null,
+cpf int  not null,
+rg int  not null,
+consenho_profissional varchar (30) not null,
+outras_informacoes varchar (50) not null,
+constraint pk_cod_especialista  primary key (cod_especialista),
+constraint fk_cod_especialidade foreign key (cod_especialidade) references especialidade (cod_especialidade)    
+)
+
+
+
+
+create table especialidade (
+cod_especialidade int identity,
+nome_especialidade varchar (30) not null,
+constraint pk_cod_especialidade primary key (cod_especialidade)
+
+
+)
+
+create table pre_Atendimento(
+cod_pre_atendimento int identity,
+cod_especialista int  not null,
+cod_paciente int  not null,
+data_abertura varchar (30) not null,
+data_consulta varchar (30) not null,
+hora_consulta varchar (50) not null,
+valor_pagamento varchar (30)  not null,
+data_pagamento varchar (50) not null,
+status_pre_atendimento varchar (20) not null,
+outras_informacoes varchar (50) not null,
+constraint pk_cod_pre_atendimento primary key (cod_pre_atendimento),
+    constraint fk_cod_especialista1 foreign key (cod_especialista) references especialista (cod_especialista),
+    constraint fk_cod_paciente1 foreign key (cod_paciente) references paciente (cod_paciente)
+)
+
+
+create table triagem (
+cod_triagem int  identity,
+cod_pre_atendimento int  not null,
+atividade_muscular varchar (30) not null,
+repiracao varchar (30) not null,
+circulacao varchar (30) not null,
+consciencia varchar (30) not null,
+temperatura varchar (30) not null,
+pressao_arterial varchar (30) not null,
+peso varchar (50)  not null,
+tamanho  varchar (50)  not null,
+idade varchar (50)  not null,
+constraint pk_cod_triagem primary key (cod_triagem),
+    constraint fk_cod_pre_atendimento foreign key (cod_pre_atendimento) references pre_atendimento (cod_pre_atendimento)
+)
+
+
+
+create table registroClinico (
+cod_RegistroClinico int identity,
+cod_pre_atendimento int  not null,
+consulta varchar (100) not null,
+diagnostico varchar (100) not null,
+receita varchar (100) not null,
+guia_exame varchar (100) not null,
+constraint pk_cod_consulta primary key (cod_RegistroClinico),
+    constraint fk_cod_pre_atendimento1 foreign key (cod_pre_atendimento) references pre_atendimento (cod_pre_atendimento)
+)

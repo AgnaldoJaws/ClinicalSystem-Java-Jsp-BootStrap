@@ -1,0 +1,16 @@
+body { font:15px arial,tahoma,verdana; }
+
+.nav { margin:0; padding:0; }
+.nav li { float:left; width:270px; position:relative; }
+.nav li a { background:#333; color:#fff; display:block; padding:7px 8px; text-decoration:none; border-top:1px solid #069; height:25px; }
+.nav li a:hover { color:#069; }
+
+/*=== sub menu ===*/
+.nav ul { display:none; position:absolute; left:0; list-style:none; padding:0; }
+.nav ul li { width:150px; float:left; } 
+.nav ul a { display:block;  padding:7px 8px; color:#fff; text-decoration:none; border-bottom:1px solid #222; }
+.nav ul a:hover { color:#069; }
+
+.ab{
+    border: solid black 1px;
+}

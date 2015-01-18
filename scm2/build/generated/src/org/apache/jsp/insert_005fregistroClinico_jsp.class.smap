@@ -1,0 +1,10 @@
+SMAP
+insert_005fregistroClinico_jsp.java
+JSP
+*S JSP
+*F
++ 0 insert_registroClinico.jsp
+insert_registroClinico.jsp
+*L
+5,24:44
+*E
